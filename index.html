@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO - Venta de PCs de Escritorio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --nexo-primary: #0d6efd;
+            --nexo-secondary: #6c757d;
+            --nexo-accent: #198754;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 76px;
+        }
+        
+        .nexo-navbar {
+            background-color: rgba(13, 110, 253, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .pc-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+            height: 100%;
+        }
+        
+        .pc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .pc-card-header {
+            background-color: var(--nexo-primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .price-tag {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--nexo-accent);
+        }
+        
+        .specs-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .specs-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #dee2e6;
+        }
+        
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .specs-list i {
+            color: var(--nexo-primary);
+            margin-right: 0.5rem;
+        }
+        
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+        
+        .contact-info {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+        
+        .footer {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        
+        .carousel-indicators button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #6c757d;
+        }
+        
+        .carousel-indicators button.active {
+            background-color: var(--nexo-primary);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 66px;
+            }
+            
+            .hero-section {
+                padding: 2rem 0;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark nexo-navbar fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-pc-display-horizontal me-2"></i>NEXO PCs
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold mb-3">Potencia tu productividad con <span class="text-primary">NEXO PCs</span></h1>
+                    <p class="lead mb-4">Ofrecemos computadoras de escritorio medio uso de alto rendimiento para gamers, profesionales y usuarios exigentes. Calidad garantizada y el mejor soporte técnico.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#productos" class="btn btn-primary btn-lg px-4">
+                            <i class="bi bi-eye me-2"></i>Ver Productos
+                        </a>
+                        <a href="#contacto" class="btn btn-outline-primary btn-lg px-4">
+                            <i class="bi bi-chat-dots me-2"></i>Contactar
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="MEDIA/principal.png" alt="PC Gaming" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section id="productos" class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2 class="display-6 fw-bold mb-3">Nuestras Computadoras</h2>
+                    <p class="text-muted">Selecciona la PC que mejor se adapte a tus necesidades</p>
+                </div>
+            </div>
+            
+            <!-- PC 1 -->
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div id="carouselPC1" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="4"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="5"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="6"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="7"></button>
+                            <button type="button" data-bs-target="#carouselPC1" data-bs-slide-to="8"></button>
+                        </div>
+                        <div class="carousel-inner rounded">
+                            <div class="carousel-item active">
+                                <img src="MEDIA/pc1,1.png" class="d-block w-100" alt="PC 1 - Vista frontal">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,2.png" class="d-block w-100" alt="PC 1 - Vista lateral">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,3.png" class="d-block w-100" alt="PC 1 - Componentes internos">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,4.png" class="d-block w-100" alt="PC 1 - Tarjeta gráfica">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,5.png" class="d-block w-100" alt="PC 1 - Placa madre">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,6.png" class="d-block w-100" alt="PC 1 - Almacenamiento">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,7.png" class="d-block w-100" alt="PC 1 - Memoria RAM">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,8.png" class="d-block w-100" alt="PC 1 - Monitor">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc1,9.png" class="d-block w-100" alt="PC 1 - Setup completo">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPC1" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPC1" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="pc-card shadow-sm">
+                        <div class="pc-card-header">
+                            <h3 class="mb-0">PC GAMER / DISEÑO</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="mb-0">PC 1 - Alto Rendimiento</h4>
+                                <div class="price-tag">4,050 Bs.</div>
+                            </div>
+                            
+                            <ul class="specs-list">
+                                <li><i class="bi bi-windows"></i> Sistema Operativo: Windows 11 Pro</li>
+                                <li><i class="bi bi-cpu"></i> Procesador: Intel i3 8100</li>
+                                <li><i class="bi bi-motherboard"></i> Placa Madre: ASUS Prime B365M-A</li>
+                                <li><i class="bi bi-gpu-card"></i> Tarjeta de Video: Radeon RX570 4GB Dedicado</li>
+                                <li><i class="bi bi-memory"></i> Memoria RAM: 16GB DDR4</li>
+                                <li><i class="bi bi-hdd"></i> Almacenamiento: 500GB SSD + 1TB HDD</li>
+                                <li><i class="bi bi-display"></i> Monitor: Dell 22 Pulgadas</li>
+                                <li><i class="bi bi-check-circle"></i> Garantísado</li>
+                            </ul>
+                            
+                            <div class="d-grid mt-4">
+                                <a href="https://wa.me/59175842510?text=¡Hola!%20Estoy%20interesado%20en%20la%20PC%201%20de%203950%20Bs." target="_blank" class="btn btn-success btn-lg">
+                                    <i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PC 2 -->
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                    <div id="carouselPC2" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="4"></button>
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="5"></button>
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="6"></button>
+                            <button type="button" data-bs-target="#carouselPC2" data-bs-slide-to="7"></button>
+                        </div>
+                        <div class="carousel-inner rounded">
+                            <div class="carousel-item active">
+                                <img src="MEDIA/pc2,1.jpeg" class="d-block w-100" alt="PC 2 - Vista frontal">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc2,2.jpeg" class="d-block w-100" alt="PC 2 - Vista lateral">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc2,3.jpeg" class="d-block w-100" alt="PC 2 - Componentes internos">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc2,4.jpeg" class="d-block w-100" alt="PC 2 - Placa madre">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc2,5.jpeg" class="d-block w-100" alt="PC 2 - Almacenamiento">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc2,6.jpeg" class="d-block w-100" alt="PC 2 - Memoria RAM">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc2,7.jpeg" class="d-block w-100" alt="PC 2 - Monitor">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc2,8.jpeg" class="d-block w-100" alt="PC 2 - Setup completo">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPC2" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPC2" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="pc-card shadow-sm">
+                        <div class="pc-card-header">
+                            <h3 class="mb-0">PC OFICINA / MULTIMEDIA</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="mb-0">PC 2 - Balanceada</h4>
+                                <div class="price-tag">2,850 Bs.</div>
+                            </div>
+                            
+                            <ul class="specs-list">
+                                <li><i class="bi bi-windows"></i> Sistema Operativo: Windows 11 Pro</li>
+                                <li><i class="bi bi-cpu"></i> Procesador: Intel i3 8100</li>
+                                <li><i class="bi bi-motherboard"></i> Placa Madre: MSI H310M Pro-VH</li>
+                                <li><i class="bi bi-gpu-card"></i> Tarjeta de Video: Integrada 4GB</li>
+                                <li><i class="bi bi-memory"></i> Memoria RAM: 16GB DDR4</li>
+                                <li><i class="bi bi-hdd"></i> Almacenamiento: 500GB SSD + 1TB HDD</li>
+                                <li><i class="bi bi-display"></i> Monitor: Dell 22 Pulgadas</li>
+                                <li><i class="bi bi-check-circle"></i> Garantísado</li>
+                            </ul>
+                            
+                            <div class="d-grid mt-4">
+                                <a href="https://wa.me/59175842510?text=¡Hola!%20Estoy%20interesado%20en%20la%20PC%202%20de%202750%20Bs." target="_blank" class="btn btn-success btn-lg">
+                                    <i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PC 3 -->
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div id="carouselPC3" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="4"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="5"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="6"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="7"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="8"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="9"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="10"></button>
+                            <button type="button" data-bs-target="#carouselPC3" data-bs-slide-to="11"></button>
+                        </div>
+                        <div class="carousel-inner rounded">
+                            <div class="carousel-item active">
+                                <img src="MEDIA/pc3,0.jpeg" class="d-block w-100" alt="PC 3 - Vista frontal">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,11.jpeg" class="d-block w-100" alt="PC 3 - Setup completo 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,1.jpeg" class="d-block w-100" alt="PC 3 - Vista lateral">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,2.jpeg" class="d-block w-100" alt="PC 3 - Componentes internos">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,3.jpeg" class="d-block w-100" alt="PC 3 - Placa madre">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,4.jpeg" class="d-block w-100" alt="PC 3 - Procesador">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,5.jpeg" class="d-block w-100" alt="PC 3 - Almacenamiento">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,6.jpeg" class="d-block w-100" alt="PC 3 - Memoria RAM">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,7.jpeg" class="d-block w-100" alt="PC 3 - Fuente de poder">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,8.jpeg" class="d-block w-100" alt="PC 3 - Tarjeta gráfica integrada">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,9.jpeg" class="d-block w-100" alt="PC 3 - Monitor">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="MEDIA/pc3,10.jpeg" class="d-block w-100" alt="PC 3 - Setup completo 1">
+                            </div>
+                            
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPC3" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPC3" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="pc-card shadow-sm">
+                        <div class="pc-card-header">
+                            <h3 class="mb-0">PC BÁSICA / ESTUDIANTES</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="mb-0">PC 3 - Económica</h4>
+                                <div class="price-tag">1,850 Bs.</div>
+                            </div>
+                            
+                            <ul class="specs-list">
+                                <li><i class="bi bi-windows"></i> Sistema Operativo: Windows 10 Pro</li>
+                                <li><i class="bi bi-cpu"></i> Procesador: Intel i4 4770</li>
+                                <li><i class="bi bi-motherboard"></i> Placa Madre: ASRock H81M VG4</li>
+                                <li><i class="bi bi-gpu-card"></i> Tarjeta de Video: Integrada 2GB</li>
+                                <li><i class="bi bi-memory"></i> Memoria RAM: 12GB DDR3</li>
+                                <li><i class="bi bi-hdd"></i> Almacenamiento: 500GB HDD + 250GB SSD</li>
+                                <li><i class="bi bi-display"></i> Monitor: Dell 22 Pulgadas</li>
+                                <li><i class="bi bi-check-circle"></i> Garantía: 6 meses</li>
+                            </ul>
+                            
+                            <div class="d-grid mt-4">
+                                <a href="https://wa.me/59175842510?text=¡Hola!%20Estoy%20interesado%20en%20la%20PC%203%20de%201850%20Bs." target="_blank" class="btn btn-success btn-lg">
+                                    <i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h2 class="display-6 fw-bold mb-3">Contacto</h2>
+                    <p class="text-muted">Contáctanos para más información o para realizar tu pedido</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-info shadow-sm">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="text-center">
+                                    <div class="mb-3">
+                                        <i class="bi bi-whatsapp display-4 text-success"></i>
+                                    </div>
+                                    <h4>WhatsApp</h4>
+                                    <p class="lead fw-bold">+591 75842510</p>
+                                    <p>Contáctanos directamente por WhatsApp para consultas inmediatas.</p>
+                                    <a href="https://wa.me/59175842510" target="_blank" class="btn btn-success">
+                                        <i class="bi bi-whatsapp me-2"></i>Enviar Mensaje
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="text-center">
+                                    <div class="mb-3">
+                                        <i class="bi bi-geo-alt display-4 text-primary"></i>
+                                    </div>
+                                    <h4>Ubicación</h4>
+                                    <p class="lead fw-bold">El Alto - La Paz, Bolivia</p>
+                                    <p>Servicio en toda el área metropolitana. Consulta por entregas a domicilio.</p>
+                                    <a href="https://maps.app.goo.gl/wbKYtNAVwcgjVGWV8"_blank" class="btn btn-primary">
+                                        <i class="bi bi-map me-2"></i>Ver en Maps
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h4 class="text-center mb-4">¿Por qué elegir NEXO PCs?</h4>
+                            <div class="row text-center">
+                                <div class="col-md-4 mb-3">
+                                    <i class="bi bi-shield-check display-6 text-primary mb-3"></i>
+                                    <h5>Garantía</h5>
+                                    <p>Todos nuestros equipos incluyen garantía de entrega.</p>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <i class="bi bi-tools display-6 text-primary mb-3"></i>
+                                    <h5>Soporte Técnico</h5>
+                                    <p>Soporte post-venta y asesoramiento personalizado.</p>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <i class="bi bi-truck display-6 text-primary mb-3"></i>
+                                    <h5>Entrega</h5>
+                                    <p>Entregamos e instalamos tu equipo en tu domicilio previa coordinación.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h3 class="fw-bold mb-3">
+                        <i class="bi bi-pc-display-horizontal me-2"></i>NEXO PCs
+                    </h3>
+                    <p>Venta de computadoras de escritorio de alto rendimiento para todos los usos: gaming, diseño, oficina y estudio.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://wa.me/59175842510" target="_blank" class="text-light fs-4">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-light fs-4">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="text-light fs-4">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Productos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#productos" class="text-light text-decoration-none">PC Gamer / Diseño</a></li>
+                        <li class="mb-2"><a href="#productos" class="text-light text-decoration-none">PC Oficina / Multimedia</a></li>
+                        <li class="mb-2"><a href="#productos" class="text-light text-decoration-none">PC Básica / Estudiantes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-whatsapp me-2"></i>
+                            <a href="https://wa.me/59175842510" target="_blank" class="text-light text-decoration-none">+591 75842510</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-geo-alt me-2"></i>
+                            <span>El Alto - La Paz, Bolivia</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-clock me-2"></i>
+                            <span>Lunes a Sábado: 9:00 - 19:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-0 mb-4" style="border-color: #6c757d;">
+            <div class="row">
+                <div class="col text-center">
+                    <p class="mb-0">&copy; 2026 NEXO PCs. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/59175842510" target="_blank" class="whatsapp-float">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling para los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Cambiar estilo de navbar al hacer scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nexo-navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(13, 110, 253, 0.98)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(13, 110, 253, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
