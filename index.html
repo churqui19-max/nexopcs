@@ -130,6 +130,35 @@
             background-color: var(--nexo-primary);
         }
         
+        /* Estilos para imágenes clickeables */
+        .carousel-item img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-item img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Estilos para el modal de imagen */
+        .modal-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .modal-content {
+            background-color: #f8f9fa;
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .modal-footer {
+            border-top: 1px solid #dee2e6;
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding-top: 66px;
@@ -146,6 +175,40 @@
                 right: 20px;
                 font-size: 25px;
             }
+            
+            .modal-dialog {
+                margin: 0.5rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .modal-lg {
+                max-width: 900px;
+            }
+        }
+        
+        /* Indicador de que la imagen es clickeable */
+        .carousel-item::after {
+            content: "🔍";
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .carousel-item:hover::after {
+            opacity: 1;
         }
     </style>
 </head>
@@ -225,31 +288,31 @@
                         </div>
                         <div class="carousel-inner rounded">
                             <div class="carousel-item active">
-                                <img src="imagen/pc1,1.png" class="d-block w-100" alt="PC 1 - Vista frontal">
+                                <img src="imagen/pc1,1.png" class="d-block w-100" alt="PC 1 - Vista frontal" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,2.png" class="d-block w-100" alt="PC 1 - Vista lateral">
+                                <img src="imagen/pc1,2.png" class="d-block w-100" alt="PC 1 - Vista lateral" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,3.png" class="d-block w-100" alt="PC 1 - Componentes internos">
+                                <img src="imagen/pc1,3.png" class="d-block w-100" alt="PC 1 - Componentes internos" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,4.png" class="d-block w-100" alt="PC 1 - Tarjeta gráfica">
+                                <img src="imagen/pc1,4.png" class="d-block w-100" alt="PC 1 - Tarjeta gráfica" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,5.png" class="d-block w-100" alt="PC 1 - Placa madre">
+                                <img src="imagen/pc1,5.png" class="d-block w-100" alt="PC 1 - Placa madre" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,6.png" class="d-block w-100" alt="PC 1 - Almacenamiento">
+                                <img src="imagen/pc1,6.png" class="d-block w-100" alt="PC 1 - Almacenamiento" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,7.png" class="d-block w-100" alt="PC 1 - Memoria RAM">
+                                <img src="imagen/pc1,7.png" class="d-block w-100" alt="PC 1 - Memoria RAM" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,8.png" class="d-block w-100" alt="PC 1 - Monitor">
+                                <img src="imagen/pc1,8.png" class="d-block w-100" alt="PC 1 - Monitor" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc1,9.png" class="d-block w-100" alt="PC 1 - Setup completo">
+                                <img src="imagen/pc1,9.png" class="d-block w-100" alt="PC 1 - Setup completo" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselPC1" data-bs-slide="prev">
@@ -279,11 +342,11 @@
                                 <li><i class="bi bi-memory"></i> Memoria RAM: 16GB DDR4</li>
                                 <li><i class="bi bi-hdd"></i> Almacenamiento: 500GB SSD + 1TB HDD</li>
                                 <li><i class="bi bi-display"></i> Monitor: Dell 22 Pulgadas</li>
-                                <li><i class="bi bi-check-circle"></i> Garantísado</li>
+                                <li><i class="bi bi-check-circle"></i> Garantizado</li>
                             </ul>
                             
                             <div class="d-grid mt-4">
-                                <a href="https://wa.me/59175842510?text=¡Hola!%20Estoy%20interesado%20en%20la%20PC%201%20de%203950%20Bs." target="_blank" class="btn btn-success btn-lg">
+                                <a href="https://wa.me/59175842510?text=¡Hola!%20Estoy%20interesado%20en%20la%20PC%201%20de%204050%20Bs." target="_blank" class="btn btn-success btn-lg">
                                     <i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp
                                 </a>
                             </div>
@@ -308,28 +371,28 @@
                         </div>
                         <div class="carousel-inner rounded">
                             <div class="carousel-item active">
-                                <img src="imagen/pc2,1.jpeg" class="d-block w-100" alt="PC 2 - Vista frontal">
+                                <img src="imagen/pc2,1.jpeg" class="d-block w-100" alt="PC 2 - Vista frontal" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc2,2.jpeg" class="d-block w-100" alt="PC 2 - Vista lateral">
+                                <img src="imagen/pc2,2.jpeg" class="d-block w-100" alt="PC 2 - Vista lateral" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc2,3.jpeg" class="d-block w-100" alt="PC 2 - Componentes internos">
+                                <img src="imagen/pc2,3.jpeg" class="d-block w-100" alt="PC 2 - Componentes internos" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc2,4.jpeg" class="d-block w-100" alt="PC 2 - Placa madre">
+                                <img src="imagen/pc2,4.jpeg" class="d-block w-100" alt="PC 2 - Placa madre" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc2,5.jpeg" class="d-block w-100" alt="PC 2 - Almacenamiento">
+                                <img src="imagen/pc2,5.jpeg" class="d-block w-100" alt="PC 2 - Almacenamiento" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc2,6.jpeg" class="d-block w-100" alt="PC 2 - Memoria RAM">
+                                <img src="imagen/pc2,6.jpeg" class="d-block w-100" alt="PC 2 - Memoria RAM" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc2,7.jpeg" class="d-block w-100" alt="PC 2 - Monitor">
+                                <img src="imagen/pc2,7.jpeg" class="d-block w-100" alt="PC 2 - Monitor" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc2,8.jpeg" class="d-block w-100" alt="PC 2 - Setup completo">
+                                <img src="imagen/pc2,8.jpeg" class="d-block w-100" alt="PC 2 - Setup completo" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselPC2" data-bs-slide="prev">
@@ -359,11 +422,11 @@
                                 <li><i class="bi bi-memory"></i> Memoria RAM: 16GB DDR4</li>
                                 <li><i class="bi bi-hdd"></i> Almacenamiento: 500GB SSD + 1TB HDD</li>
                                 <li><i class="bi bi-display"></i> Monitor: Dell 22 Pulgadas</li>
-                                <li><i class="bi bi-check-circle"></i> Garantísado</li>
+                                <li><i class="bi bi-check-circle"></i> Garantizado</li>
                             </ul>
                             
                             <div class="d-grid mt-4">
-                                <a href="https://wa.me/59175842510?text=¡Hola!%20Estoy%20interesado%20en%20la%20PC%202%20de%202750%20Bs." target="_blank" class="btn btn-success btn-lg">
+                                <a href="https://wa.me/59175842510?text=¡Hola!%20Estoy%20interesado%20en%20la%20PC%202%20de%202850%20Bs." target="_blank" class="btn btn-success btn-lg">
                                     <i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp
                                 </a>
                             </div>
@@ -392,42 +455,41 @@
                         </div>
                         <div class="carousel-inner rounded">
                             <div class="carousel-item active">
-                                <img src="imagen/pc3,0.jpeg" class="d-block w-100" alt="PC 3 - Vista frontal">
+                                <img src="imagen/pc3,0.jpeg" class="d-block w-100" alt="PC 3 - Vista frontal" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,11.jpeg" class="d-block w-100" alt="PC 3 - Setup completo 2">
+                                <img src="imagen/pc3,11.jpeg" class="d-block w-100" alt="PC 3 - Setup completo 2" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,1.jpeg" class="d-block w-100" alt="PC 3 - Vista lateral">
+                                <img src="imagen/pc3,1.jpeg" class="d-block w-100" alt="PC 3 - Vista lateral" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,2.jpeg" class="d-block w-100" alt="PC 3 - Componentes internos">
+                                <img src="imagen/pc3,2.jpeg" class="d-block w-100" alt="PC 3 - Componentes internos" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,3.jpeg" class="d-block w-100" alt="PC 3 - Placa madre">
+                                <img src="imagen/pc3,3.jpeg" class="d-block w-100" alt="PC 3 - Placa madre" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,4.jpeg" class="d-block w-100" alt="PC 3 - Procesador">
+                                <img src="imagen/pc3,4.jpeg" class="d-block w-100" alt="PC 3 - Procesador" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,5.jpeg" class="d-block w-100" alt="PC 3 - Almacenamiento">
+                                <img src="imagen/pc3,5.jpeg" class="d-block w-100" alt="PC 3 - Almacenamiento" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,6.jpeg" class="d-block w-100" alt="PC 3 - Memoria RAM">
+                                <img src="imagen/pc3,6.jpeg" class="d-block w-100" alt="PC 3 - Memoria RAM" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,7.jpeg" class="d-block w-100" alt="PC 3 - Fuente de poder">
+                                <img src="imagen/pc3,7.jpeg" class="d-block w-100" alt="PC 3 - Fuente de poder" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,8.jpeg" class="d-block w-100" alt="PC 3 - Tarjeta gráfica integrada">
+                                <img src="imagen/pc3,8.jpeg" class="d-block w-100" alt="PC 3 - Tarjeta gráfica integrada" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,9.jpeg" class="d-block w-100" alt="PC 3 - Monitor">
+                                <img src="imagen/pc3,9.jpeg" class="d-block w-100" alt="PC 3 - Monitor" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagen/pc3,10.jpeg" class="d-block w-100" alt="PC 3 - Setup completo 1">
+                                <img src="imagen/pc3,10.jpeg" class="d-block w-100" alt="PC 3 - Setup completo 1" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openImageModal(this)">
                             </div>
-                            
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselPC3" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
@@ -450,7 +512,7 @@
                             
                             <ul class="specs-list">
                                 <li><i class="bi bi-windows"></i> Sistema Operativo: Windows 10 Pro</li>
-                                <li><i class="bi bi-cpu"></i> Procesador: Intel i4 4770</li>
+                                <li><i class="bi bi-cpu"></i> Procesador: Intel i7 4770</li>
                                 <li><i class="bi bi-motherboard"></i> Placa Madre: ASRock H81M VG4</li>
                                 <li><i class="bi bi-gpu-card"></i> Tarjeta de Video: Integrada 2GB</li>
                                 <li><i class="bi bi-memory"></i> Memoria RAM: 12GB DDR3</li>
@@ -506,7 +568,7 @@
                                     <h4>Ubicación</h4>
                                     <p class="lead fw-bold">El Alto - La Paz, Bolivia</p>
                                     <p>Servicio en toda el área metropolitana. Consulta por entregas a domicilio.</p>
-                                    <a href="https://maps.app.goo.gl/wbKYtNAVwcgjVGWV8"_blank" class="btn btn-primary">
+                                    <a href="https://maps.app.goo.gl/wbKYtNAVwcgjVGWV8" target="_blank" class="btn btn-primary">
                                         <i class="bi bi-map me-2"></i>Ver en Maps
                                     </a>
                                 </div>
@@ -595,6 +657,27 @@
         </div>
     </footer>
 
+    <!-- Modal para mostrar imagen en grande -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Vista detallada</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" class="modal-image" alt="Imagen ampliada">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="downloadImage()">
+                        <i class="bi bi-download me-1"></i> Descargar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/59175842510" target="_blank" class="whatsapp-float">
         <i class="bi bi-whatsapp"></i>
@@ -629,6 +712,68 @@
                 navbar.style.backgroundColor = 'rgba(13, 110, 253, 0.98)';
             } else {
                 navbar.style.backgroundColor = 'rgba(13, 110, 253, 0.95)';
+            }
+        });
+        
+        // Función para abrir el modal con la imagen en grande
+        function openImageModal(imgElement) {
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imgElement.src;
+            modalImage.alt = imgElement.alt;
+            
+            // Actualizar el título del modal con el texto alternativo
+            document.getElementById('imageModalLabel').textContent = imgElement.alt;
+            
+            // Guardar la referencia a la imagen para descargar
+            modalImage.dataset.originalSrc = imgElement.src;
+            modalImage.dataset.filename = imgElement.alt.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.jpg';
+        }
+        
+        // Función para descargar la imagen
+        function downloadImage() {
+            const modalImage = document.getElementById('modalImage');
+            const link = document.createElement('a');
+            link.href = modalImage.src;
+            link.download = modalImage.dataset.filename || 'imagen_nexo_pc.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Agregar evento de clic a todas las imágenes de los carruseles
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hacer que todas las imágenes de los carruseles sean clickeables
+            const carouselImages = document.querySelectorAll('.carousel-item img');
+            carouselImages.forEach(img => {
+                // Asegurarse de que todas las imágenes tengan el evento onclick
+                if (!img.hasAttribute('onclick')) {
+                    img.setAttribute('onclick', 'openImageModal(this)');
+                    img.setAttribute('data-bs-toggle', 'modal');
+                    img.setAttribute('data-bs-target', '#imageModal');
+                }
+                
+                // Agregar estilo de cursor
+                img.style.cursor = 'pointer';
+            });
+            
+            // También hacer clickeable la imagen principal si existe
+            const mainImage = document.querySelector('.hero-section img');
+            if (mainImage) {
+                mainImage.style.cursor = 'pointer';
+                mainImage.addEventListener('click', function() {
+                    openImageModal(this);
+                    // Abrir el modal manualmente
+                    const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+                    imageModal.show();
+                });
+            }
+        });
+        
+        // Mejorar el zoom en imágenes en dispositivos táctiles
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'IMG' && e.target.classList.contains('modal-image')) {
+                // Permitir zoom táctil en imágenes del modal
+                e.target.style.touchAction = 'manipulation';
             }
         });
     </script>
